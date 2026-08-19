@@ -4,11 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const dotenv_1 = require("dotenv");
+const db_1 = __importDefault(require("./db/db"));
+(0, dotenv_1.config)();
 const app = (0, express_1.default)();
+// Database connection
+(0, db_1.default)();
 app.get("/", (req, res) => {
     res.json({
         success: true,
-        message: "Backend running successfully"
+        message: "Backend running successfully",
     });
 });
 app.listen(3001, () => {
