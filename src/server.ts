@@ -6,6 +6,7 @@ import morgan from "morgan";
 import cors from "cors";
 import { rateLimit } from "express-rate-limit";
 import mongoSanitize from "express-mongo-sanitize";
+import routes from "./routes";
 
 config();
 
@@ -51,6 +52,10 @@ app.get("/", (req, res) => {
     message: "Backend running successfully",
   });
 });
+
+// ADD ROUTES
+app.use('/api/v1',routes)
+
 
 app.listen(3001, () => {
   console.log("server started");
